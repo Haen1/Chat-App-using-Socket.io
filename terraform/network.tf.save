@@ -1,0 +1,39 @@
+provider "aws" {
+  region = "us-west-1"  # Change this to your desired region
+}
+
+resource "aws_vpc" "example_vpc" {
+  cidr_block = "10.0.0.0/16"  # Change this to your desired VPC CIDR block
+}
+
+resource "aws_subnet" "public_subnet_a" {
+  vpc_id     = aws_vpc.example_vpc.id
+  cidr_block = "10.0.1.0/24"  # Change this to your desired subnet CIDR block for AZ a
+  availability_zone = "us-west-1a"  # Change this to your desired availability zone for AZ a
+  map_public_ip_on_launch = true
+
+  tags = {
+    Name = "public-subnet-a"
+  }
+}
+
+resource "aws_subnet" "public_subnet_b" {
+  vpc_id     = aws_vpc.example_vpc.id
+  cidr_block = "10.0.2.0/24"  # Change this to your desired subnet CIDR block for AZ b
+  availability_zone = "us-west-1b"  # Change this to your desired availability zone for AZ b
+  map_public_ip_on_launch = true
+
+  tags = {
+    Name = "public-subnet-b"
+  }
+}
+Run the following commands in your terminal:
+csharp
+Copy code
+terraform init
+terraform apply
+Terraform will prompt you to confirm the changes. Enter yes to proceed.
+
+This Terraform configuration will create a VPC with two public subnets in different availability zones. Each subnet will be configured to automatically assign public IP addresses to instances launched in them (map_public_ip_on_launch = true). Make sure to customize the values according to your requirements, such as the region, CIDR blocks, availability zones, and other settings.
+
+Always review the documentation and adhere to best practices when working with networking resources in AWS.
