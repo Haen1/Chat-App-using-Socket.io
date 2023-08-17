@@ -15,3 +15,4 @@ See it in action - [Kunal Chat App](https://kunal-chat-app.herokuapp.com)
 10.	Load_balance.tf will have inside a resource "aws_lb" "load-balancer" that will have the type of load_balancer, the security_groups.id and subnets.id.
 11.	Also is needed a resource for load balancer listener that will have load_balancer_arn and a target_group_arn inside a default action, this will start a communication between load_balancer and target_group, is also required resource "aws_lb_target_group_attachment" "targer-group-attachment-a" and a “b” one, for connect target_group and instance.
 
+I can not finish it because of time, the step#4 that is about ansible i can not make it, I configure the server and install nodeJS but i couldnot make it, maybe with more time but not now. Thanks for the opportunity I really apreciate it.
